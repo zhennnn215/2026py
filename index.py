@@ -51,8 +51,21 @@ def index():
     homepage += "<a href=/sp1>爬蟲結果</a><hr>"
     homepage += "<a href=/movie>查詢即將上映電影</a><hr>"
     homepage += "<a href=/movie2>抓取電影進入資料庫</a><hr>"
-    homepage += "<a href=/movie3>查詢電影資料庫</a>"
+    homepage += "<a href=/movie3>查詢電影資料庫</a><hr>"
+    homepage += "<a href=/road>易肇事路口查詢</a>"
     return homepage
+
+@app.route("/road")
+def road():
+    R = ""
+    url = "https://newdatacenter.taichung.gov.tw/api/v1/no-auth/resource.download?rid=a1b899c0-511f-4e3d-b22b-814982a97e41"
+    Data = requests.get(url)
+    #print(Data.text)
+
+    JsonData = json.loads(Data.text)
+    for item in JsonData:
+        R += item["路口名稱"] + ",總共發生" + item["總件數"] + "件事故<br>"
+    return R
 
 @app.route("/sp1")
 def sp1():
