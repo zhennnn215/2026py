@@ -55,6 +55,8 @@ def index():
     homepage += "<a href=/movie3>查詢電影資料庫</a><hr>"
     homepage += "<a href=/road>易肇事路口查詢</a><hr>"
     homepage += "<a href=/weather>天氣及降雨機率查詢</a>"
+    homepage += "<a href=/rate>本周新片進口</a>"
+    homepage += "<a href=/demo>聊天機器人</a>"
     return homepage
 
 @app.route("/webhook", methods=["POST"])
